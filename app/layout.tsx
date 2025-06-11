@@ -27,13 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light">
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
           <CookieBanner />
           <WelcomeModal casinos={casinos} />
-        </ThemeProvider>
       </body>
     </html>
   )
