@@ -45,13 +45,12 @@ export default function TrendingCasinos({ casinos }: TrendingCasinosProps) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {displayCasinos.map((casino, index) => (
-            <Card
-              key={casino.name}
-              className={`casino-card overflow-hidden transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <CardContent className="p-6 flex flex-col h-full">
-                <Link href={casino.url} target="_blank" rel="noopener noreferrer" className="block flex-grow">
+            <Link key={casino.name} href={casino.url} target="_blank" rel="noopener noreferrer" className="block">
+              <Card
+                className={`casino-card overflow-hidden transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex flex-col items-center h-full">
                     <div className="relative w-full h-24 mb-4 animate-float">
                       <Image
@@ -78,11 +77,10 @@ export default function TrendingCasinos({ casinos }: TrendingCasinosProps) {
                           <Star
                             key={i}
                             size={14}
-                            className={`star ${
-                              i < Math.floor(casino.rating)
+                            className={`star ${i < Math.floor(casino.rating)
                                 ? "text-[#FFD700] fill-[#FFD700]"
                                 : "text-gray-500 fill-gray-500"
-                            }`}
+                              }`}
                             style={{ animationDelay: `${i * 0.1}s` }}
                           />
                         ))}
@@ -90,19 +88,19 @@ export default function TrendingCasinos({ casinos }: TrendingCasinosProps) {
                       <span className="ml-2 text-xs text-[#a0aec0]">{casino.rating}</span>
                     </div>
                   </div>
-                </Link>
 
-                {/* Fixed position footer for buttons and counter */}
-                <div className="mt-auto">
-                  <Button className="w-full bg-[#007845] hover:bg-[#006035] text-white glow-button claim-button focus-outline">
-                    Claim Bonus
-                  </Button>
-                  <div className="bonus-counter mt-2">
-                    <BonusCounter initialCount={casino.usersCount} casinoName={casino.name} />
+                  {/* Fixed position footer for buttons and counter */}
+                  <div className="mt-auto">
+                    <Button className="w-full bg-[#007845] hover:bg-[#006035] text-white glow-button claim-button focus-outline">
+                      Claim Bonus
+                    </Button>
+                    <div className="bonus-counter mt-2">
+                      <BonusCounter initialCount={casino.usersCount} casinoName={casino.name} />
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
