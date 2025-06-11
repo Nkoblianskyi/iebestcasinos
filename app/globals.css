@@ -1,0 +1,769 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --irish-green: #007845;
+  --gold: #ffd700;
+  --casino-purple: #6a0dad;
+  --casino-red: #e50000;
+  --dark-bg: #0f1419;
+  --dark-card: #1a1f2e;
+  --dark-surface: #252b3a;
+  --dark-border: #2d3748;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 152 100% 24%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 47 100% 50%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 152 100% 24%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 152 100% 24%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 47 100% 50%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 152 100% 24%;
+}
+
+body {
+  background-color: #0f1419;
+  color: #e2e8f0;
+}
+
+/* Global Animation Styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Global Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Staggered Animation Delays */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* Global Hover Effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.hover-bright {
+  transition: filter 0.3s ease;
+}
+
+.hover-bright:hover {
+  filter: brightness(1.1);
+}
+
+/* Focus Styles */
+.focus-outline {
+  transition: outline 0.2s ease, box-shadow 0.2s ease;
+}
+
+.focus-outline:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+/* Header Animation */
+.sticky-header {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.sticky-header.scrolled {
+  background-color: rgba(15, 20, 25, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--irish-green);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--irish-green);
+}
+
+/* Button Animations */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.7s ease;
+  z-index: -1;
+}
+
+.animated-button:hover::before {
+  left: 100%;
+}
+
+.animated-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.animated-button:active {
+  transform: translateY(-1px);
+}
+
+/* Card Animations */
+.animated-card {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, rgba(26, 31, 46, 0.9), rgba(37, 43, 58, 0.9));
+}
+
+.animated-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Icon Animations */
+.animated-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animated-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--gold);
+}
+
+/* Logo Animation */
+.logo-text {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-text .highlight {
+  position: relative;
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+
+.logo-text:hover .highlight {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* Dark Casino Background */
+.casino-bg {
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #252b3a 100%);
+  background-image: radial-gradient(circle at 25% 25%, rgba(0, 120, 69, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(106, 13, 173, 0.05) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+.casino-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23FFD700' stroke-width='0.3' opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 10L40 30L30 50L20 30L30 10Z' fill='none' stroke='%23007845' stroke-width='0.3' opacity='0.15'/%3E%3C/svg%3E");
+  background-position: 0 0, 30px 30px;
+  background-size: 40px 40px, 60px 60px;
+  animation: casinoBgMove 60s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes casinoBgMove {
+  0% {
+    background-position: 0 0, 30px 30px;
+  }
+  100% {
+    background-position: 40px 40px, 90px 90px;
+  }
+}
+
+/* Floating Coins Animation */
+.floating-coins {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23FFD700' stroke='%23B8860B' stroke-width='1'/%3E%3Ctext x='12' y='16' font-size='12' text-anchor='middle' fill='%23B8860B'%3E€%3C/text%3E%3C/svg%3E");
+  background-size: contain;
+  opacity: 0.7;
+  animation-name: float-coin;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 6s;
+}
+
+@keyframes float-coin {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Glowing Button Animation */
+.glow-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 215, 0, 0),
+    rgba(255, 215, 0, 0.3),
+    rgba(255, 215, 0, 0),
+    rgba(255, 215, 0, 0)
+  );
+  transform: rotate(30deg);
+  animation: glowSweep 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes glowSweep {
+  0% {
+    transform: rotate(30deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg) translateX(100%);
+  }
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+/* Casino Card Hover Effects */
+.casino-card {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 58, 0.95));
+  backdrop-filter: blur(10px);
+}
+
+.casino-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.casino-card:hover .card-bonus {
+  color: var(--gold);
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.casino-card:hover .claim-button {
+  background: linear-gradient(45deg, var(--irish-green), #00a65a);
+  box-shadow: 0 0 10px rgba(0, 120, 69, 0.5);
+}
+
+/* Bonus Counter Animation */
+.bonus-counter {
+  position: relative;
+}
+
+.bonus-counter .pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Star Rating Animation */
+.star-rating .star {
+  transition: all 0.3s ease;
+}
+
+.casino-card:hover .star-rating .star {
+  animation: starTwinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Modal Animation */
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content {
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Footer Animation */
+.footer-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-icon:hover {
+  transform: translateY(-3px);
+  color: var(--gold);
+}
+
+/* FAQ Animation */
+.faq-item {
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateX(5px);
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Hero Section Animation */
+.hero-title {
+  animation: heroTitleIn 1s cubic-bezier(0.11, 0, 0.5, 0) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes heroTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-subtitle {
+  animation: heroSubtitleIn 1s 0.3s cubic-bezier(0.11, 0, 0.5, 0) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes heroSubtitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-cta {
+  animation: heroCTAIn 1s 0.6s cubic-bezier(0.11, 0, 0.5, 0) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes heroCTAIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Feature Card Animation */
+.feature-icon-container {
+  transition: all 0.3s ease;
+}
+
+.animated-card:hover .feature-icon-container {
+  transform: scale(1.1) rotate(5deg);
+  background-color: rgba(0, 120, 69, 0.2);
+}
+
+.animated-card:hover .feature-icon {
+  color: var(--irish-green);
+  animation: iconPulse 1s infinite alternate;
+}
+
+@keyframes iconPulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+/* Rating Criteria Animation */
+.rating-criteria-card {
+  transition: all 0.3s ease;
+}
+
+.rating-criteria-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.rating-criteria-card:hover .criteria-icon {
+  animation: criteriaIconSpin 1s ease-in-out;
+}
+
+@keyframes criteriaIconSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Safe Gambling Animation */
+.safe-gambling-logo {
+  transition: all 0.3s ease;
+  filter: grayscale(50%);
+}
+
+.safe-gambling-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Cookie Banner Animation */
+.cookie-banner {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Dark Theme Backgrounds */
+.dark-section {
+  background: linear-gradient(135deg, #1a1f2e 0%, #252b3a 100%);
+}
+
+.dark-card {
+  background: linear-gradient(135deg, rgba(26, 31, 46, 0.9), rgba(37, 43, 58, 0.9));
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.irish-flag-bg {
+  background: linear-gradient(
+    to right,
+    #169b62 0%,
+    #169b62 33.33%,
+    #1a1f2e 33.33%,
+    #1a1f2e 66.66%,
+    #ff883e 66.66%,
+    #ff883e 100%
+  );
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(0, 120, 69, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
+}
+
+.editors-choice {
+  position: relative;
+}
+
+.editors-choice::before {
+  content: "Editor's Choice";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg, var(--gold), #b8860b);
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(184, 134, 11, 0.3);
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    box-shadow: 0 2px 10px rgba(184, 134, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 15px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.clover-bg-dense {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 60 60' opacity='0.05'%3E%3Cpath d='M30 20c5.5 0 10-4.5 10-10S35.5 0 30 0 20 4.5 20 10s4.5 10 10 10zm0 0c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 0c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm0 0c0-5.5-4.5-10-10-10S10 14.5 10 20s4.5 10 10 10 10-4.5 10-10zm0 0c0 5.5 4.5 10 10 10s10-4.5 10-10-4.5-10-10-10-10 4.5-10 10z' fill='%23007845'/%3E%3C/svg%3E");
+  background-color: rgba(26, 31, 46, 0.8);
+}
