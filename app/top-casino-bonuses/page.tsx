@@ -18,7 +18,7 @@ export default function TopCasinoBonusesPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6">
             <span className="text-3xl">🎁</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Top Casino Bonuses in Ireland</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-green-700">Top Casino Bonuses in Ireland</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
             Discover the best casino bonuses available to Irish players in 2025, reviewed and updated monthly.
           </p>
