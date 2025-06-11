@@ -61,16 +61,20 @@ export default function HeroSection({ topCasino }: HeroSectionProps) {
       <div className="container mx-auto px-4 z-10 text-center">
         {/* Irish flag and license info */}
         <div className={`flex items-center justify-center mb-6 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          <div className="flex items-center bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-            <Image src="/ireland.png" alt="logo" width={40} height={40} />
-            <span className="text-white font-medium ml-2">Irish License</span>
-            <span className="mx-3 text-gray-400">|</span>
-            <div className="flex items-center">
-              <Shield className="w-4 h-4 text-[#007845] mr-1" />
-              <span className="text-white font-medium">Safe Gambling</span>
+          <div className="flex items-center bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm gap-2 sm:gap-4">
+            <div className="flex items-center gap-1">
+              <Image src="/ireland.png" alt="logo" width={30} height={30} />
+              <span className="text-white font-medium text-xs sm:text-base whitespace-nowrap  ml-2">Irish License</span>
             </div>
-            <span className="mx-3 text-gray-400">|</span>
-            <span className="bg-white text-black text-sm font-bold px-2 py-1 rounded">18+</span>
+            <div className="w-px h-4 bg-gray-400 hidden sm:block"></div>
+            <div className="flex items-center gap-1">
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-[#007845]" />
+              <span className="text-white font-medium text-xs sm:text-base whitespace-nowrap">Safe Gambling</span>
+            </div>
+            <div className="w-px h-4 bg-gray-400 hidden sm:block"></div>
+            <span className="bg-white text-black text-xs sm:text-sm font-bold px-2 py-1 rounded whitespace-nowrap">
+              18+
+            </span>
           </div>
         </div>
 
@@ -88,7 +92,7 @@ export default function HeroSection({ topCasino }: HeroSectionProps) {
 
         <div className={`max-w-md mx-auto mb-10 hero-cta ${isVisible ? "opacity-100" : "opacity-0"}`}>
           <Link href={topCasino.url} target="_blank" rel="noopener noreferrer" className="block">
-            <Card className="editors-choice dark-card border-[#FFD700] overflow-hidden hover:shadow-lg transition-shadow cursor-pointer animated-card z-10 ">
+            <Card className="editors-choice dark-card border-[#FFD700] overflow-hidden hover:shadow-lg transition-shadow cursor-pointer animated-card">
               <CardContent className="p-6">
                 <div className="flex flex-col items-center">
                   <div className="relative w-40 h-40 mb-4 animate-float">
